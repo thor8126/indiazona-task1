@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Container,
+  Stack,
+  useTheme,
+  useMediaQuery,
+  Divider,
+} from "@mui/material";
 
 import Tracker from "./Tracker";
 import DeliveryInfo from "./DeliveryInfo";
@@ -65,10 +72,13 @@ const OrderTracking = () => {
 
         {isMobile ? (
           // Mobile Layout
-          <Stack spacing={2}>
+          <Stack spacing={1}>
             <ProductDetail product={data.product} />
+
             <Tracker trackingData={data.trackingData} />
+            <Divider />
             <DeliveryInfo deliveryInfo={data.deliveryInfo} />
+            <Divider />
             <OrderSummary summary={data.summary} />
           </Stack>
         ) : (
@@ -91,13 +101,15 @@ const OrderTracking = () => {
 
             {/* RightSection */}
             <Stack
-              spacing={2}
+              spacing={1}
               sx={{
                 flex: 1,
               }}
             >
               <Tracker trackingData={data.trackingData} />
+              <Divider />
               <DeliveryInfo deliveryInfo={data.deliveryInfo} />
+              <Divider />
               <OrderSummary summary={data.summary} />
             </Stack>
           </Box>

@@ -3,8 +3,8 @@ import { Box, Divider, Paper, Typography } from "@mui/material";
 
 function OrderSummary({ summary }) {
   return (
-    <Paper elevation={0} sx={{ p: 3 }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+    <Paper elevation={0} sx={{ paddingX: 3 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <Typography variant="h6">Order Summary</Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>

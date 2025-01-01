@@ -2,7 +2,9 @@ import { styled } from "@mui/material/styles";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
 const steps = ["Order Confirmed", "Shipped", "Out For Delivery", "Delivered"];
+
 const CustomStepper = styled(Stepper)(({ isMobile }) => ({
   "--stepper-dot-size": "1.25rem",
   "--stepper-line-height": "0.45rem",
@@ -10,7 +12,7 @@ const CustomStepper = styled(Stepper)(({ isMobile }) => ({
   "--stepper-primary-color": "#8CB89F",
   "--stepper-secondary-color": "#EAEAF0",
   "--stepper-text-color": "#455F76",
-  "--stepper-inactive-dot-color": "#BABABA",
+  "--stepper-inactive-dot-color": isMobile ? "#455F76" : "#BABABA",
 
   width: "100%",
   ...(isMobile && {
@@ -73,15 +75,15 @@ const CustomStepper = styled(Stepper)(({ isMobile }) => ({
     fontSize: "0.875rem",
     color: "var(--stepper-text-color)",
     "&.Mui-active": {
-      color: "var(--stepper-primary-color)",
+      color: "var(--stepper-text-color)",
     },
     "&.Mui-completed": {
-      color: "var(--stepper-primary-color)",
+      color: "var(--stepper-text-color)",
     },
   },
 }));
 
-const StepDot = styled("div")(({ active, completed }) => ({
+const StepDot = styled("div")(({ active, completed, isMobile }) => ({
   width: "var(--stepper-dot-size)",
   height: "var(--stepper-dot-size)",
   borderRadius: "50%",
@@ -104,7 +106,6 @@ const ResponsiveStepper = ({
   dotSize = "1.25rem",
   lineHeight = "0.25rem",
   spacingUnit = "0.5rem",
-  textColor = "#A0A0A0",
   inactiveDotColor = "#BABABA",
 }) => {
   const theme = useTheme();
@@ -116,12 +117,14 @@ const ResponsiveStepper = ({
     "--stepper-dot-size": dotSize,
     "--stepper-line-height": lineHeight,
     "--stepper-spacing-unit": spacingUnit,
-    "--stepper-text-color": textColor,
-    "--stepper-inactive-dot-color": inactiveDotColor,
+    "--stepper-text-color": isMobile ? "#2A2A2A" : "#6B7280",
+    "--stepper-inactive-dot-color": isMobile ? "#455F76" : inactiveDotColor,
   };
 
   const StepIconComponent = ({ active, completed }) => {
-    return <StepDot active={active} completed={completed} />;
+    return (
+      <StepDot active={active} completed={completed} isMobile={isMobile} />
+    );
   };
 
   return (
