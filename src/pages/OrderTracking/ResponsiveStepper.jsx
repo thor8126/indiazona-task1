@@ -5,11 +5,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const steps = ["Order Confirmed", "Shipped", "Out For Delivery", "Delivered"];
 const CustomStepper = styled(Stepper)(({ isMobile }) => ({
   "--stepper-dot-size": "1.25rem",
-  "--stepper-line-height": "0.25rem",
+  "--stepper-line-height": "0.45rem",
   "--stepper-spacing-unit": "0.5rem",
   "--stepper-primary-color": "#8CB89F",
   "--stepper-secondary-color": "#EAEAF0",
-  "--stepper-text-color": "#A0A0A0",
+  "--stepper-text-color": "#455F76",
   "--stepper-inactive-dot-color": "#BABABA",
 
   width: "100%",
@@ -25,7 +25,7 @@ const CustomStepper = styled(Stepper)(({ isMobile }) => ({
     border: "none",
     backgroundColor: "var(--stepper-secondary-color)",
     zIndex: 0,
-    marginTop: isMobile ? 0 : "calc(var(--stepper-dot-size) * 1.45)",
+    marginTop: isMobile ? -14 : "calc(var(--stepper-dot-size) * 1.45)",
     position: isMobile ? "absolute" : "relative",
     left: isMobile
       ? "calc(var(--stepper-dot-size) / 2 - var(--stepper-line-height) / 2)"

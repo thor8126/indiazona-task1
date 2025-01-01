@@ -12,7 +12,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "12px",
 }));
 
-export default function Tracker() {
+export default function Tracker({ trackingData }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -35,7 +35,7 @@ export default function Tracker() {
             textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
           }}
         >
-          Order ID: 3354-6546-5452
+          Order ID: {trackingData.orderId}
         </Typography>
         <Button
           variant="outlined"
@@ -97,7 +97,7 @@ export default function Tracker() {
                 fontWeight: "semibold",
               }}
             >
-              Dec 24, 2024
+              {trackingData.orderConfirmedDate}
             </span>
           </Typography>
         </Box>
@@ -148,7 +148,7 @@ export default function Tracker() {
             >
               Estimated delivery:{" "}
               <span style={{ fontSize: "16px", fontWeight: "medium" }}>
-                Dec 30, 2024
+                {trackingData.estimatedDelivery}
               </span>
             </Typography>
           </Box>
@@ -174,7 +174,7 @@ export default function Tracker() {
               fontWeight: "regular",
             }}
           >
-            Tue, 24th Dec
+            {trackingData.orderConfirmedDay}
           </Typography>
           <Typography
             sx={{
@@ -184,7 +184,7 @@ export default function Tracker() {
               color: "grey",
             }}
           >
-            at 6:12 AM
+            at {trackingData.orderConfirmedTime}
           </Typography>
         </Box>
         <Typography
@@ -194,7 +194,7 @@ export default function Tracker() {
             lineHeight: 1.5,
           }}
         >
-          Expected by, Mon 30th
+          Expected by, {trackingData.expectedBy}
         </Typography>
       </Box>
 
@@ -208,7 +208,7 @@ export default function Tracker() {
                 mb: 1,
               }}
             >
-              Order Confirmed Tue, 24th Dec '24
+              Order Confirmed {trackingData.orderConfirmedWithYear}
             </Typography>
             <Typography
               sx={{
@@ -228,7 +228,8 @@ export default function Tracker() {
                 mb: 0.5,
               }}
             >
-              • Tue, 24th Dec '24 - 6:12 am, Seller has processed your order.
+              • {trackingData.orderConfirmedWithYear} -{" "}
+              {trackingData.orderConfirmedTime}, {trackingData.sellerMsg}.
             </Typography>
           </Box>
 
@@ -240,7 +241,7 @@ export default function Tracker() {
                 mb: 1,
               }}
             >
-              Wed, 25th Dec '24 - 7:05pm
+              {trackingData.pickupData}
             </Typography>
             <Typography
               sx={{
@@ -261,7 +262,7 @@ export default function Tracker() {
                 mb: 1,
               }}
             >
-              Wed, 25th Dec '24 - 8:12pm
+              {trackingData.shippedData}
             </Typography>
             <Typography
               sx={{
@@ -271,7 +272,7 @@ export default function Tracker() {
                 mb: 0.5,
               }}
             >
-              • Shipped Sun, 15th Sep '24
+              • Shipped -{trackingData.shippedDay}
             </Typography>
             <Typography
               sx={{
@@ -280,7 +281,7 @@ export default function Tracker() {
                 pl: 2,
               }}
             >
-              • Logistics - "Order ID or pick up ID" Your item has been shipped.
+              • Logistics - {trackingData.shippedMsg}
             </Typography>
           </Box>
 
@@ -292,7 +293,7 @@ export default function Tracker() {
                 mb: 1,
               }}
             >
-              Delivery Expected By Thu 19th Sep
+              Delivery Expected By {trackingData.delieveryExpected}
             </Typography>
             <Typography
               sx={{
@@ -301,7 +302,8 @@ export default function Tracker() {
                 pl: 2,
               }}
             >
-              • Item yet to be delivered. Expected by Thu, 19th Sep
+              • Item yet to be delivered. Expected by{" "}
+              {trackingData.delieveryExpected}.
             </Typography>
           </Box>
         </Box>

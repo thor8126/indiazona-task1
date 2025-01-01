@@ -3,7 +3,7 @@ import { Box, Button, Typography, Paper } from "@mui/material";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
-export default function DeliveryInfo() {
+export default function DeliveryInfo({ deliveryInfo }) {
   return (
     <Box sx={{ display: "flex", gap: 3 }}>
       <Paper elevation={0} sx={{ p: 3, flex: 1 }}>
@@ -38,16 +38,18 @@ export default function DeliveryInfo() {
             Address
           </Typography>
           <Typography sx={{ fontSize: "16px", fontWeight: "medium" }}>
-            847 Jewess Bridge Apt.
+            {deliveryInfo.address}
           </Typography>
           <Typography sx={{ fontSize: "16px", fontWeight: "medium" }}>
-            174 London, UK
+            {deliveryInfo.city}
+            {", "}
+            {deliveryInfo.country}
           </Typography>
           <Typography sx={{ fontSize: "16px", fontWeight: "medium" }}>
-            474-769-3919
+            {deliveryInfo.phone}
           </Typography>
           <Typography sx={{ fontSize: "16px", fontWeight: "medium" }}>
-            Mob: 7766449345
+            Mob: {deliveryInfo.mobile}
           </Typography>
         </Box>
       </Paper>

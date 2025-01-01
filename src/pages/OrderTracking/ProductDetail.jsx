@@ -1,8 +1,7 @@
 import React from "react";
 import { Box, Button, Paper, Typography } from "@mui/material";
-import img from "./image.png";
 
-function ProductDetail() {
+function ProductDetail({ product }) {
   return (
     <Paper
       elevation={0}
@@ -23,27 +22,27 @@ function ProductDetail() {
             justifyContent: "center",
           }}
         >
-          <img src={img} alt="product" style={{ height: "100%" }} />
+          <img src={product.img} alt="product" style={{ height: "100%" }} />
         </Box>
         <Box
           sx={{ display: "flex", flexDirection: "column", paddingX: 1, gap: 1 }}
         >
           <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-            SAMSUNG
+            {product.brand}
           </Typography>
           <Typography
             sx={{ fontSize: "16px", fontWeight: "medium", lineHeight: "24px" }}
           >
-            SAMSUNG Galaxy F05 - Twilight Blue (64 GB, 4 GB RAM)
+            {product.name}
           </Typography>
         </Box>
         <Box
           sx={{ display: "flex", alignItems: "baseline", gap: 2, paddingX: 1 }}
         >
           <Typography sx={{ fontWeight: "bold", fontSize: "28px" }}>
-            ₹ 11,139.33
+            ₹{product.price}
           </Typography>
-          <Typography sx={{ color: "#FF944E" }}>35% off</Typography>
+          <Typography sx={{ color: "#FF944E" }}>{product.discount}</Typography>
         </Box>
         <Box
           sx={{ display: "flex", flexDirection: "column", gap: 2, padding: 1 }}

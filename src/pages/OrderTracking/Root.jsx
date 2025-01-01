@@ -6,8 +6,48 @@ import DeliveryInfo from "./DeliveryInfo";
 import OrderSummary from "./OrderSummary";
 import ProductDetail from "./ProductDetail";
 import BreadCrumbs from "./BreadCrumbs";
+import img from "./image.png";
 
 const OrderTracking = () => {
+  const data = {
+    product: {
+      brand: "SAMSUNG",
+      name: "SAMSUNG Galaxy F05 - Twilight Blue (64 GB, 4 GB RAM)",
+      price: "11,139.33",
+      discount: "35% off",
+      img: img,
+    },
+    trackingData: {
+      orderId: "3354-6546-5452",
+      orderConfirmedDate: "Dec 24, 2024",
+      estimatedDelivery: "Dec 30, 2024",
+      orderConfirmedDay: "Tue, 24th Dec",
+      orderConfirmedTime: "6:12 AM",
+      expectedBy: "Mon 30th",
+      orderConfirmedWithYear: "Tue, 24th Dec '24",
+      sellerMsg: "Seller has processed your order",
+      pickupData: "Wed, 25th Dec '24 - 7:05pm",
+      shippedData: "Wed, 25th Dec '24 - 8:12pm",
+      shippedDay: "Sun, 15th Sep '24",
+      shippedMsg: "Order ID or pick up ID - Your item has been shipped.",
+      delieveryExpected: "Thu 19th Sep",
+    },
+    deliveryInfo: {
+      address: "847 Jewess Bridge Apt.",
+      city: "174 London",
+      country: "UK",
+      phone: "474-769-3919",
+      mobile: "7766449345",
+    },
+    summary: {
+      mrp: 13349.54,
+      discount: 20,
+      delivery: 0,
+      tax: 149.54,
+      total: 11139.33,
+    },
+  };
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -26,10 +66,10 @@ const OrderTracking = () => {
         {isMobile ? (
           // Mobile Layout
           <Stack spacing={2}>
-            <ProductDetail />
-            <Tracker />
-            <DeliveryInfo />
-            <OrderSummary />
+            <ProductDetail product={data.product} />
+            <Tracker trackingData={data.trackingData} />
+            <DeliveryInfo deliveryInfo={data.deliveryInfo} />
+            <OrderSummary summary={data.summary} />
           </Stack>
         ) : (
           // Desktop Layout
@@ -46,7 +86,7 @@ const OrderTracking = () => {
                 minWidth: { md: "300px" },
               }}
             >
-              <ProductDetail />
+              <ProductDetail product={data.product} />
             </Box>
 
             {/* RightSection */}
@@ -56,9 +96,9 @@ const OrderTracking = () => {
                 flex: 1,
               }}
             >
-              <Tracker />
-              <DeliveryInfo />
-              <OrderSummary />
+              <Tracker trackingData={data.trackingData} />
+              <DeliveryInfo deliveryInfo={data.deliveryInfo} />
+              <OrderSummary summary={data.summary} />
             </Stack>
           </Box>
         )}

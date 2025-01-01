@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Divider, Paper, Typography } from "@mui/material";
 
-function OrderSummary() {
+function OrderSummary({ summary }) {
   return (
     <Paper elevation={0} sx={{ p: 3 }}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -9,24 +9,26 @@ function OrderSummary() {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography>MRP</Typography>
-            <Typography>₹ 13,349.54</Typography>
+            <Typography>₹{summary.mrp}</Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography>Discount</Typography>
-            <Typography color="error.main">(20%)</Typography>
+            <Typography color="error.main">({summary.discount}%)</Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography>Delivery</Typography>
-            <Typography color="success.main">FREE</Typography>
+            <Typography color="success.main">
+              {summary.delivery ? `₹ ${summary.delivery}` : "Free"}
+            </Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography>Tax</Typography>
-            <Typography>₹ 149.54</Typography>
+            <Typography>₹ {summary.tax}</Typography>
           </Box>
           <Divider sx={{ my: 1 }} />
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography fontWeight="bold">Total</Typography>
-            <Typography fontWeight="bold">₹ 11,139.33</Typography>
+            <Typography fontWeight="bold">₹ {summary.total}</Typography>
           </Box>
         </Box>
       </Box>
