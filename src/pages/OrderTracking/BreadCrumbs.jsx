@@ -5,8 +5,13 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 function BreadCrumbs() {
   return (
     <Breadcrumbs
-      separator={<NavigateNextIcon fontSize="large" />}
-      sx={{ mb: 2 }}
+      separator={<NavigateNextIcon fontSize={isMobile ? "small" : "large"} />}
+      sx={{
+        mb: 1,
+        "& .MuiBreadcrumbs-separator": {
+          mx: isMobile ? 0.6 : 1,
+        },
+      }}
     >
       <Link
         sx={{ fontSize: "0.9rem" }}
